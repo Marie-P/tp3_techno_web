@@ -60,18 +60,22 @@ function explorerDir($path)
 				else // On affiche le nom du fichier
 					echo "Fichier : " . $entree . "</br>";
 
-
-				$port="3306";
-				$db="lecturerecursive";
-				$user='root';
-				$pass='my-secret-pw';
-				$connect = "mysql:host=localhost:$port;dbname=$db";
-				$database = new PDO($connect, $user, $pass);
+				// connection à la bdd
+				try {
+			    $port="3306";
+			    $db="lecturerecursive";
+			    $user='root';
+			    $pass='my-secret-pw';
+			    $connect = "mysql:host=localhost:$port;dbname=$db";
+			    $database = new PDO($connect, $user, $pass);
+			  } catch (PDOException $e) {
+			      print "Erreur !: " . $e->getMessage() . "<br/>";
+			  }
 
 				// Si le fichier n'est pas déjà enregistré dans la bdd, on l'insère
-				$sql = $database->query("SELECT COUNT(*) AS nbImages FROM `imagesData` WHERE `name` = '$nameFile' AND `type` = '$extension' AND `size` = '$size' AND `path` = '$pathToSave'")->fetch();
+				$sql = $database->query("SELECT COUNT(*) AS nbImages FROM `imagesdata` WHERE `name` = '$nameFile' AND `type` = '$extension' AND `size` = '$size' AND `path` = '$pathToSave'")->fetch();
 				if((int) $sql['nbImages'] == 0){
-					$database->query("INSERT INTO `imagesData`(`name`, `type`, `size`, `path`) VALUES ('$nameFile', '$extension', '$size', '$pathToSave')");
+					$database->query("INSERT INTO `imagesdata`(`name`, `type`, `size`, `path`) VALUES ('$nameFile', '$extension', '$size', '$pathToSave')");
 				}
 				$database = null;
 			}
