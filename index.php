@@ -62,15 +62,15 @@ function explorerDir($path)
 
 				// connection à la bdd
 				try {
-			    $port="3306";
-			    $db="lecturerecursive";
-			    $user='root';
-			    $pass='my-secret-pw';
-			    $connect = "mysql:host=localhost:$port;dbname=$db";
-			    $database = new PDO($connect, $user, $pass);
-			  } catch (PDOException $e) {
-			      print "Erreur !: " . $e->getMessage() . "<br/>";
-			  }
+				    $port="3306";
+				    $db="lecturerecursive";
+				    $user='root';
+				    $pass='my-secret-pw';
+				    $connect = "mysql:host=localhost:$port;dbname=$db";
+				    $database = new PDO($connect, $user, $pass);
+				  } catch (PDOException $e) {
+				      print "Erreur !: " . $e->getMessage() . "<br/>";
+				  }
 
 				// Si le fichier n'est pas déjà enregistré dans la bdd, on l'insère
 				$sql = $database->query("SELECT COUNT(*) AS nbImages FROM `imagesdata` WHERE `name` = '$nameFile' AND `type` = '$extension' AND `size` = '$size' AND `path` = '$pathToSave'")->fetch();
