@@ -7,6 +7,6 @@ La consigne pour ce travail est de réutiliser le code envoyé, pour mettre en p
 * Ensuite, identifier chaque fichier. Enregistrer dans la table de base de données : 
   * Le nom
   * Le type (.jpg, .png)
-  * La taille (en ko)
+  * La taille (en octets)
   * Le chemin
 * Le téléversement effectué dans le tp2 : https://github.com/Marie-P/tp2_techno_web, doit être en mesure de s’appliquer sur les images qui se trouvent dans ce répertoire.  
