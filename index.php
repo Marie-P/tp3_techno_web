@@ -63,7 +63,7 @@ function explorerDir($path)
 
 				$port="3306";
 				$db="lecturerecursive";
-				$user='user';
+				$user='root';
 				$pass='my-secret-pw';
 				$connect = "mysql:host=localhost:$port;dbname=$db";
 				$database = new PDO($connect, $user, $pass);
